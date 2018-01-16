@@ -1,4 +1,11 @@
-@extends('layouts.admin')
+@extends('layouts.app')
+
 @section('content')
-    <h1 class="text-center">Opps No Page Found </h1>
-@stop
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10 col-md-offset-1">
+   <div class="alert alert-danger"> <h3 class="text-center">Opps something wrong not found page</h3></div>
+            </div>
+        </div>
+    </div>
+@endsection
