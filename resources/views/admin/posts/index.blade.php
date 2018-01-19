@@ -1,8 +1,8 @@
 @extends('layouts.admin')
 @section('content')
-    @if(Session::has('delete_msg_user'))
+    @if(Session::has('delete_msg_post'))
         <div class="alert alert-success">
-            <p class="text-center">{{session('delete_msg_user')}}</p>
+            <p class="text-center">{{session('delete_msg_post')}}</p>
         </div>
     @endif
 
@@ -30,7 +30,7 @@
                     <td>{{$post->category_id ? $post->category->name : "No Category Selected"}}</td>
                     <td>{{$post->user->name}}</td>
                     <td>{{$post->title}}</td>
-                    <td>{{$post->body}}</td>
+                    <td>{{str_limit($post->body,8)}}</td>
                     <td>{{$post->created_at->diffForHumans()}}</td>
                     <td>{{$post->updated_at->diffForHumans()}}</td>
                     <td><a href="{{route('admin.posts.edit',$post->id)}}"><i class="fa fa-pencil-square fa-2x"></i></a>
