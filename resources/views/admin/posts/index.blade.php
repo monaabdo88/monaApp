@@ -16,6 +16,7 @@
             <th>Author</th>
             <th>Title</th>
             <th>Body</th>
+            <th>Comments</th>
             <th>Created</th>
             <th>Updated</th>
             <th>Edit</th>
@@ -26,11 +27,12 @@
             @foreach($posts as $post)
                 <tr>
                     <td>{{$post->id}}</td>
-                    <td><img style="max-height:15%;width:40%" class="img-thumbnail img-responsive" src="{{$post->photo ? $post->photo->file : '/images/no-photo.png'}}" /></td>
+                    <td><img style="max-height:15%;width:20%" class="img-thumbnail img-responsive" src="{{$post->photo ? $post->photo->file : '/images/no-photo.png'}}" /></td>
                     <td>{{$post->category_id ? $post->category->name : "No Category Selected"}}</td>
                     <td>{{$post->user->name}}</td>
-                    <td>{{$post->title}}</td>
+                    <td><a href="{{route('home.post',$post->id)}}">{{$post->title}}</a></td>
                     <td>{{str_limit($post->body,8)}}</td>
+                    <td><a href="{{route('admin.comments.show',$post->id)}}">View Comments</a> </td>
                     <td>{{$post->created_at->diffForHumans()}}</td>
                     <td>{{$post->updated_at->diffForHumans()}}</td>
                     <td><a href="{{route('admin.posts.edit',$post->id)}}"><i class="fa fa-pencil-square fa-2x"></i></a>

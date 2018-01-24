@@ -1,8 +1,8 @@
 @extends('layouts.admin')
 @section('content')
-    @if(Session::has('delete_msg_post'))
+    @if(Session::has('delete_msg_category'))
         <div class="alert alert-success">
-            <p class="text-center">{{session('delete_msg_post')}}</p>
+            <p class="text-center">{{session('delete_msg_category')}}</p>
         </div>
     @endif
     <div class="col-md-6">

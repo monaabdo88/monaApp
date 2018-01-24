@@ -14,7 +14,7 @@
 Route::get('/', function () {
     return view('welcome');
 });
-
+Route::get('/post/{id}',['as'=>'home.post','uses'=>'AdminPostController@post']);
 Route::auth();
 
 Route::get('/home', 'HomeController@index');
@@ -22,6 +22,9 @@ Route::group(['middleware'=>'admin'],function (){
     Route::resource('admin/users','AdminUserController');
     Route::resource('admin/posts','AdminPostController');
     Route::resource('admin/categories','AdminCategoryController');
+    Route::resource('admin/media','AdminPhotoController');
+    Route::resource('admin/comments','PostCommentsController');
+    Route::resource('admin/comments/replies','CommentRepliesController');
 });
 Route::get('/admin',function(){
     return view('admin.index');
