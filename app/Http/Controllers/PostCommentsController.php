@@ -54,7 +54,19 @@ class PostCommentsController extends Controller
         $request->session()->flash('comment_msg','Your Comment has been added successsfully');
         return redirect()->back();
     }
-
+    public function createComment(Request $request){
+        $user = Auth::user();
+        $data = [
+            'post_id' => $request->post_id,
+            'author'=> $user->name,
+            'photo' => $user->photo->file,
+            'email' => $user->email,
+            'comment'=> $request->body
+        ];
+        Comment::create($data);
+        $request->session()->flash('comment_msg','Your Comment has been added successsfully');
+        return redirect()->back();
+    }
     /**
      * Display the specified resource.
      *
@@ -90,7 +102,7 @@ class PostCommentsController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $comment = Comment::FindOrFail($id)->update($request->all());
+        Comment::FindOrFail($id)->update($request->all());
         return redirect('/admin/comments');
     }
 

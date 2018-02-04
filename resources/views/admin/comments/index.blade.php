@@ -11,6 +11,7 @@
             <th>Comment</th>
             <th>Post</th>
             <th>Activate</th>
+            <th>Replies</th>
             <th>Created</th>
             <th>Updated</th>
             <th>Delete</th>
@@ -42,6 +43,7 @@
                             {!! Form::close() !!}
                         @endif
                     </td>
+                    <td><a href="{{route('admin.comments.replies.show',$comment->id)}}">View Replies</a> </td>
                     <td>{{$comment->created_at->diffForHumans()}}</td>
                     <td>{{$comment->updated_at->diffForHumans()}}</td>
                     <td>

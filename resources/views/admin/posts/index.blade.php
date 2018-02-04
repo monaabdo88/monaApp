@@ -30,7 +30,7 @@
                     <td><img style="max-height:15%;width:20%" class="img-thumbnail img-responsive" src="{{$post->photo ? $post->photo->file : '/images/no-photo.png'}}" /></td>
                     <td>{{$post->category_id ? $post->category->name : "No Category Selected"}}</td>
                     <td>{{$post->user->name}}</td>
-                    <td><a href="{{route('home.post',$post->id)}}">{{$post->title}}</a></td>
+                    <td><a href="{{route('home.post',$post->slug)}}">{{$post->title}}</a></td>
                     <td>{{str_limit($post->body,8)}}</td>
                     <td><a href="{{route('admin.comments.show',$post->id)}}">View Comments</a> </td>
                     <td>{{$post->created_at->diffForHumans()}}</td>
@@ -42,4 +42,9 @@
         @endif
         </tbody>
     </table>
+    <div class="row">
+        <div class="col-sm-6 col-sm-offset-5">
+            {{$posts->render()}}
+        </div>
+    </div>
 @stop

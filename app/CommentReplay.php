@@ -13,9 +13,10 @@ class CommentReplay extends Model
         'comment',
         'is_active',
         'author',
-        'email'
+        'email',
+        'photo'
     ];
-    public function replies(){
+    public function comment(){
         return $this->belongsTo('App\Comment');
     }
 }
