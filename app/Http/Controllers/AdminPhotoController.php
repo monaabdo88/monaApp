@@ -29,4 +29,19 @@ class AdminPhotoController extends Controller
         $photo->delete();
         return redirect('/admin/media/');
     }
+    public function delimg(Request $request){
+        if(isset($request->del_single)){
+            $this->destroy($request->photo);
+            return redirect()->back();
+        }
+        if(isset($request->del_all) && !empty($request->del)) {
+            $photos = Photo::findOrFail($request->del);
+            foreach ($photos as $img) {
+                $img->delete();
+            }
+            return redirect()->back();
+        }else{
+            return redirect()->back();
+        }
+    }
 }

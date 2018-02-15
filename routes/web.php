@@ -45,6 +45,7 @@ Route::resource('admin/media','AdminPhotoController',['names'=>[
     'store'=>'admin.media.store',
     'edit'=>'admin.media.edit'
 ]]);
+Route::delete('admin/delete/image','AdminPhotoController@delimg');
 Route::resource('admin/comments','PostCommentsController',['names'=>[
     'index'=>'admin.comments.index',
     'create'=>'admin.comments.create',

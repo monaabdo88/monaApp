@@ -356,7 +356,7 @@
 @yield('footer')
 
 
-
+@yield('scripts')
 
 
 </body>
