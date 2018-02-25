@@ -43,7 +43,7 @@
                                 {!! Form::close() !!}
                             @endif
                         </td>
-                        <td><a href="{{route('admin.comments.replies.show',$comment->id)}}">View Replies</a></td>
+                        <td><a href="{{route('replies.show',$comment->id)}}">View Replies</a></td>
                         <td>{{$comment->created_at->diffForHumans()}}</td>
                         <td>{{$comment->updated_at->diffForHumans()}}</td>
                         <td>

@@ -11,11 +11,11 @@
 |
 */
 Auth::routes();
+Route::get('/logout', 'Auth\LoginController@logout');
 Route::get('/', function () {
     return view('welcome');
 });
 Route::get('/post/{id}',['as'=>'home.post','uses'=>'AdminPostController@post']);
-Route::get('/logout', 'Auth\LoginController@logout');
 Route::group(['middleware'=>'admin'],function (){
     Route::get('/admin',function(){
        return view('admin.index');
@@ -46,6 +46,7 @@ Route::resource('admin/media','AdminPhotoController',['names'=>[
     'edit'=>'admin.media.edit'
 ]]);
 Route::delete('admin/delete/image','AdminPhotoController@delimg');
+
 Route::resource('admin/comments','PostCommentsController',['names'=>[
     'index'=>'admin.comments.index',
     'create'=>'admin.comments.create',
